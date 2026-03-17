@@ -1,12 +1,48 @@
-# Brazilian National Civil Aviation Agency - Public Data Visualization / ETL
-## Executive Summary:
-Using Python, I extract the data from ANAC website, treated the nulls fields and merged two differents dataframes to complete some fields and with SQL on Big Query merge the datasets for having the airports cordinates for a map visualization. After all this treatment I load the treated dataframe to a Big Query Table and refresh the data visualization that I build on Looker Studio. On Dashboard we can have a better visualization of Data besides of fast insights with the main KPI's:
+# Brazilian National Civil Aviation Agency - Data Pipeline and Visualization
 
-  ### 1. Flights per Month and Year
-  ### 2. Occupation per Flight
-  ### 3. Airports Demand / Hubs
-  ### 4. Airlines Market Share
-  ### 5. Main Routes
+This project builds an automated data pipeline using public aviation data
+published by the Brazilian National Civil Aviation Agency (ANAC).
+
+The pipeline collects raw data, performs data cleaning and transformation,
+loads the processed data into a data warehouse and generates interactive
+visualizations for flight analysis.
+
+Main goals:
+
+• Analyze domestic flight routes in Brazil
+
+• Identify busiest airports
+
+• Understand flight distribution across the country
+
+## Data Pipeline Architecture
+
+ANAC Open Data
+
+      ↓
+        
+Python ETL
+    
+      ↓
+BigQuery Data Warehouse
+       
+      ↓
+      
+Looker Studio Dashboard
+
+## Technologies Used
+
+• Python – Data processing and ETL
+
+• Pandas – Data transformation
+
+• SQL – Data aggregation
+
+• BigQuery – Data warehouse
+
+• Looker Studio – Data visualization
+
+• GitHub – Version control
 
 ## Dataset Problems:
 The dataset had in "Destination Airport UF" field 15% of null values and the same for "Origin Airport UF". Besides I need a coordinate reference to build a map visualization on Looker, and the main dataset didn't have these info. Besides the "Airline Name" field had different names for the same company, this could damage your KPI's based on this field.
@@ -33,3 +69,43 @@ The notebook used for this treatment is on repository.
 The data visualization answer all the questions and bring some context like Coronavirus Pandemic and Brazilian regional info.
 Link to BI: https://lookerstudio.google.com/s/sLkPb25YhMM
 
+## Geral View
+
+<img width="968" height="360" alt="image" src="https://github.com/user-attachments/assets/087a8791-c308-47d3-ae82-b99ee8e3f702" />
+
+## Top Hubs and International Destinations from Brazil
+<img width="438" height="552" alt="image" src="https://github.com/user-attachments/assets/952eca17-47da-4a55-833b-6dd7d8b30c36" />
+
+<img width="432" height="545" alt="image" src="https://github.com/user-attachments/assets/1982c9e7-21ab-4988-ae4b-83d7bfb63dd5" />
+
+## Flights per Month and Year
+
+<img width="1290" height="413" alt="image" src="https://github.com/user-attachments/assets/a2529fd4-7474-40e6-a53a-9cec349c9063" />
+
+<img width="1329" height="391" alt="image" src="https://github.com/user-attachments/assets/d73d028b-379d-414e-b971-1c54d31fa5d6" />
+
+
+## Airlines Market Share
+
+<img width="1819" height="527" alt="image" src="https://github.com/user-attachments/assets/05233762-b857-43db-a63a-c9fb5e065fe2" />
+
+## Main routes
+<img width="1842" height="748" alt="image" src="https://github.com/user-attachments/assets/c242e6e1-304e-4bc7-aa5d-f07bcb3205b4" />
+
+## Key Insights
+
+• São Paulo–Congonhas and São Paulo–Guarulhos are among the busiest airports.
+
+• The highest flight volume occurs between major metropolitan regions.
+
+• Domestic routes represent the majority of flight traffic in Brazil.
+
+• After the Coronavirus Pandemic, flights presents a growth of 7% per year.
+
+• LATAM Airlines is the first one in Market Share, followed by AZUL Airlines and GOL Airlines.
+
+• The Top 3 International destinations are Argentina, Chile and EUA.
+
+## Future Improvements
+
+• Automate data ingestion using Google Cloud Scheduler
